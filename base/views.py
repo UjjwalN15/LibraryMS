@@ -17,3 +17,4 @@ class BookApiView(ModelViewSet):
     serializer_class = BookSerializer
     parser_classes = (MultiPartParser, FormParser)
     filterset_fields = ['name','author','category']
+    search_fields = ['name','description']
