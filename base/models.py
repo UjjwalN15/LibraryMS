@@ -22,7 +22,7 @@ class Book(models.Model):
     author = models.ForeignKey(Author,on_delete=models.CASCADE)
     category = models.ManyToManyField(Category)
     published_date = models.DateField()
-    stock = models.IntegerField()
+    pdf_file = models.FileField(upload_to='books/pdf/', null=True, blank=True)
     def __str__(self):
         return self.name
     

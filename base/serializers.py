@@ -1,4 +1,5 @@
 from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 from .models import *
 
 
@@ -13,6 +14,8 @@ class AuthorSerializer(ModelSerializer):
         fields = '__all__'
         
 class BookSerializer(ModelSerializer):
-    class Meta:
-        model = Book
-        fields = '__all__'
+        category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all(), many=True)
+        pdf_file = serializers.FileField(required=False, allow_null=True)
+        class Meta:
+            model = Book
+            fields = '__all__'

@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from .serializers import *
+from rest_framework.parsers import MultiPartParser, FormParser
 # Create your views here.
 
 class CategoryApiView(ModelViewSet):
@@ -15,3 +15,4 @@ class AuthorApiView(ModelViewSet):
 class BookApiView(ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    parser_classes = (MultiPartParser, FormParser)
